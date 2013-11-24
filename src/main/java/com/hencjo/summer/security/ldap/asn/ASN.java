@@ -106,7 +106,7 @@ public class ASN {
 	}
 
 	public static final class AsnString implements AsnNode {
-		private String value;
+		private String value = "";
 		
 		public void set(String value) { this.value = value; }
 		
@@ -267,6 +267,10 @@ public class ASN {
 	}
 	
 	public static AsnString string() {
+		return new AsnString();
+	}
+
+	public static AsnString nullValue() {
 		return new AsnString();
 	}
 

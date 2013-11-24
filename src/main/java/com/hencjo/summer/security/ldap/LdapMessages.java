@@ -18,4 +18,11 @@ public class LdapMessages {
 		public final AsnRaw password = raw();
 		public final AsnSequence message = sequence(messageId, application(0, protocolVersion, username, choice(0, password)));
 	}
+	
+//	UnbindRequest ::= [APPLICATION 2] NULL
+	public static final class UnbindRequest {
+		public final AsnInteger messageId = integer();
+		public final AsnString nullValue = nullValue();
+		public final AsnSequence message = sequence(messageId, application(2, nullValue));
+	}
 }
