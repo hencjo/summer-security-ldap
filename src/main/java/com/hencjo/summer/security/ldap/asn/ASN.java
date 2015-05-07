@@ -2,11 +2,11 @@ package com.hencjo.summer.security.ldap.asn;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import sun.security.util.BigInt;
 import com.hencjo.summer.security.ldap.DerDecodeException;
 import com.hencjo.summer.security.ldap.utils.Charsets;
 import com.hencjo.summer.security.ldap.utils.Hex;
@@ -191,7 +191,7 @@ public class ASN {
 				if (read == -1) throw new IOException("Unexpected end of input.");
 				bs[i] = (byte) read;
 			}
-			value = new BigInt(bs).toInt();
+			value = new BigInteger(bs).intValue();
 			return (1 + rl.readBytes + rl.length);
 		}
 
@@ -228,7 +228,7 @@ public class ASN {
 				if (read == -1) throw new IOException("Unexpected end of input.");
 				bs[i] = (byte) read;
 			}
-			value = new BigInt(bs).toInt();
+			value = new BigInteger(bs).intValue();
 			return (1 + rl.readBytes + rl.length);
 		}
 
@@ -312,7 +312,7 @@ public class ASN {
 			if (read == -1) throw new IOException("Unexpected end of input.");
 			bs[i] = (byte) read;
 		}
-		return new ReadLength(new BigInt(bs).toInt(), bytesContainingLength + 1);
+		return new ReadLength(new BigInteger(bs).intValue(), bytesContainingLength + 1);
 	}
 
 	public static AsnRaw raw() {
